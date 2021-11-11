@@ -1,7 +1,7 @@
-package ir.jeykey.megastreamermode.events;
+package ir.jeykey.meganicks.events;
 
-import ir.jeykey.megastreamermode.MegaStreamermode;
-import ir.jeykey.megastreamermode.database.models.StreamerMode;
+import ir.jeykey.meganicks.MegaNicks;
+import ir.jeykey.meganicks.database.models.Nick;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,9 +13,9 @@ public class PlayerJoin implements Listener {
         protected void onPlayerJoin(PlayerJoinEvent e) {
                 Player p = e.getPlayer();
 
-                Bukkit.getScheduler().runTaskAsynchronously(MegaStreamermode.getInstance(), () -> {
-                        if (StreamerMode.exists(p)) {
-                                StreamerMode.apply(p, StreamerMode.fetchNickName(p));
+                Bukkit.getScheduler().runTaskAsynchronously(MegaNicks.getInstance(), () -> {
+                        if (Nick.exists(p)) {
+                                Nick.apply(p, Nick.fetchNickName(p));
                         }
                 });
         }

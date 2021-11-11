@@ -1,9 +1,8 @@
-package ir.jeykey.megastreamermode.config;
+package ir.jeykey.meganicks.config;
 
-import ir.jeykey.megastreamermode.utils.Common;
+import ir.jeykey.meganicks.utils.Common;
 import org.bukkit.configuration.InvalidConfigurationException;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 

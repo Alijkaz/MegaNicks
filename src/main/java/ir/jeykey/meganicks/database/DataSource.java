@@ -1,9 +1,9 @@
-package ir.jeykey.megastreamermode.database;
+package ir.jeykey.meganicks.database;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
-import ir.jeykey.megastreamermode.MegaStreamermode;
-import ir.jeykey.megastreamermode.config.Storage;
+import ir.jeykey.meganicks.MegaNicks;
+import ir.jeykey.meganicks.config.Storage;
 import org.bukkit.Bukkit;
 
 import java.io.File;
@@ -20,10 +20,10 @@ public class DataSource {
         public static void SQLite() throws SQLException, IOException, ClassNotFoundException {
                 Class.forName("org.sqlite.JDBC");
 
-                File file = new File(MegaStreamermode.getInstance().getDataFolder(), "data.db");
+                File file = new File(MegaNicks.getInstance().getDataFolder(), "data.db");
                 if (!file.exists()) file.createNewFile();
 
-                config.setJdbcUrl("jdbc:sqlite:" + MegaStreamermode.getInstance().getDataFolder() + "/data.db");
+                config.setJdbcUrl("jdbc:sqlite:" + MegaNicks.getInstance().getDataFolder() + "/data.db");
                 config.setConnectionTestQuery("SELECT 1");
                 config.addDataSourceProperty("cachePrepStmts", "true");
                 config.addDataSourceProperty("prepStmtCacheSize", "250");
@@ -33,7 +33,7 @@ public class DataSource {
 
                 connection = ds.getConnection();
 
-                StreamerModeDB.createTables(false);
+                NicksDB.createTables(false);
         }
 
         public static void MySQL() throws SQLException {
@@ -49,7 +49,7 @@ public class DataSource {
 
                 connection = ds.getConnection();
 
-                StreamerModeDB.createTables(true);
+                NicksDB.createTables(true);
         }
 
         public static Connection getConnection() {
@@ -57,7 +57,7 @@ public class DataSource {
         }
 
         public static void executeQueryAsync(PreparedStatement statement) {
-                Bukkit.getScheduler().runTaskAsynchronously(MegaStreamermode.getInstance(), new Runnable() {
+                Bukkit.getScheduler().runTaskAsynchronously(MegaNicks.getInstance(), new Runnable() {
                         @Override
                         public void run() {
                                 try {

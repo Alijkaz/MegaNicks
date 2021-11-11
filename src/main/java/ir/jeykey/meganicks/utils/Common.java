@@ -1,6 +1,6 @@
-package ir.jeykey.megastreamermode.utils;
+package ir.jeykey.meganicks.utils;
 
-import ir.jeykey.megastreamermode.config.Messages;
+import ir.jeykey.meganicks.config.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

@@ -1,43 +1,37 @@
-package ir.jeykey.megastreamermode.database.models;
+package ir.jeykey.meganicks.database.models;
 
-import ir.jeykey.megastreamermode.MegaStreamermode;
-import ir.jeykey.megastreamermode.config.RandomNames;
-import ir.jeykey.megastreamermode.database.DataSource;
-import ir.jeykey.megastreamermode.database.Queries;
-import ir.jeykey.megastreamermode.utils.Common;
+import ir.jeykey.meganicks.config.RandomNames;
+import ir.jeykey.meganicks.database.DataSource;
+import ir.jeykey.meganicks.database.Queries;
+import ir.jeykey.meganicks.utils.Common;
 import lombok.Getter;
 import lombok.Setter;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
 
-public class StreamerMode {
+public class Nick {
         @Setter @Getter private Integer id;
         @Setter @Getter private String userName;
         @Setter @Getter private String nickName;
         @Setter @Getter private String createdAt;
 
-        public StreamerMode(int id) {
+        public Nick(int id) {
                 this(null, null, id);
         }
 
-        public StreamerMode(String userName) {
+        public Nick(String userName) {
                 this(userName, null);
         }
 
-        public StreamerMode(String userName, String nickName) {
+        public Nick(String userName, String nickName) {
                 this(userName, nickName, -1);
         }
 
-        public StreamerMode(String userName, String nickName, int id) {
+        public Nick(String userName, String nickName, int id) {
                 setId(id);
                 setUserName(userName);
                 setNickName(nickName);
@@ -72,7 +66,7 @@ public class StreamerMode {
         }
 
         /**
-         * This method is used to find and load specific sm using StreamerMode#id or StreamerMode#userName
+         * This method is used to find and load specific sm using Nick#id or Nick#userName
          */
         public void load() {
                 try {
@@ -100,9 +94,9 @@ public class StreamerMode {
         }
 
         public static boolean exists(Player p) {
-                StreamerMode streamerMode = new StreamerMode(p.getName());
-                streamerMode.load();
-                return streamerMode.getNickName() != null;
+                Nick nick = new Nick(p.getName());
+                nick.load();
+                return nick.getNickName() != null;
         }
 
         public void delete() {
@@ -151,30 +145,30 @@ public class StreamerMode {
         }
 
         public static void disguise(Player player) {
-                String nick = RandomNames.get();
+                String newName = RandomNames.get();
 
-                if (nick == null) {
+                if (newName == null) {
                         Common.send(player, "&cThere was a problem generating a random name for you, Please contact server administrators.");
                 }
 
-                StreamerMode streamerMode = new StreamerMode(player.getName(), nick);
+                Nick nick = new Nick(player.getName(), newName);
 
                 if (exists(player)) {
-                        streamerMode.update();
+                        nick.update();
                 } else {
-                        streamerMode.save();
+                        nick.save();
                 }
 
-                Common.send(player, "&aYou're now disguised as &2" + nick + " &aacross our network!");
+                Common.send(player, "&aYou're now disguised as &2" + newName + " &aacross our network!");
 
-                apply(player, nick);
+                apply(player, newName);
         }
 
         public static void unDisguise(Player player) {
                 apply(player, player.getName());
 
-                StreamerMode streamerMode = new StreamerMode(player.getName());
-                streamerMode.delete();
+                Nick nick = new Nick(player.getName());
+                nick.delete();
 
                 Common.send(player, "&aYou're no longer disguised");
         }

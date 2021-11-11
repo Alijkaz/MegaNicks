@@ -1,13 +1,13 @@
-package ir.jeykey.megastreamermode;
+package ir.jeykey.meganicks;
 
 import com.zaxxer.hikari.pool.HikariPool;
-import ir.jeykey.megastreamermode.commands.StreamerModeCommand;
-import ir.jeykey.megastreamermode.config.Messages;
-import ir.jeykey.megastreamermode.config.RandomNames;
-import ir.jeykey.megastreamermode.config.Storage;
-import ir.jeykey.megastreamermode.database.DataSource;
-import ir.jeykey.megastreamermode.events.PlayerJoin;
-import ir.jeykey.megastreamermode.utils.Common;
+import ir.jeykey.meganicks.commands.NickCommand;
+import ir.jeykey.meganicks.config.Messages;
+import ir.jeykey.meganicks.config.RandomNames;
+import ir.jeykey.meganicks.config.Storage;
+import ir.jeykey.meganicks.database.DataSource;
+import ir.jeykey.meganicks.events.PlayerJoin;
+import ir.jeykey.meganicks.utils.Common;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,8 +15,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class MegaStreamermode extends JavaPlugin {
-        @Getter public static MegaStreamermode instance;
+public class MegaNicks extends JavaPlugin {
+        @Getter public static MegaNicks instance;
 
         @Override
         public void onEnable() {
@@ -32,7 +32,7 @@ public class MegaStreamermode extends JavaPlugin {
                 new RandomNames().setup();
 
                 // Registering commands
-                getCommand("streamermode").setExecutor(new StreamerModeCommand());
+                getCommand("streamermode").setExecutor(new NickCommand());
 
                 // Registering events
                 getServer().getPluginManager().registerEvents(new PlayerJoin(), this);

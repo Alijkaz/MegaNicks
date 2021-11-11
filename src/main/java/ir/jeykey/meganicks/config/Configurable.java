@@ -1,6 +1,6 @@
-package ir.jeykey.megastreamermode.config;
+package ir.jeykey.meganicks.config;
 
-import ir.jeykey.megastreamermode.MegaStreamermode;
+import ir.jeykey.meganicks.MegaNicks;
 import lombok.Getter;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -29,7 +29,7 @@ public abstract  class Configurable {
                         create();
                         load();
                 } catch (IOException|InvalidConfigurationException exception) {
-                        MegaStreamermode.disablePlugin(true,
+                        MegaNicks.disablePlugin(true,
                                 "&cFailed to load config file. Please check config directory/file permissions",
                                 "*vIf you believe this problem is from our plugin please contact development team",
                                 "&cReason: &4" + exception.getMessage()
@@ -61,12 +61,12 @@ public abstract  class Configurable {
         public void create()
         {
                 // Get config file in plugins data folder
-                file = new File(MegaStreamermode.getInstance().getDataFolder(), this.configName);
+                file = new File(MegaNicks.getInstance().getDataFolder(), this.configName);
 
                 // Checking if config exists, if not creating one with default values
                 if (!file.exists()) {
                         file.getParentFile().mkdirs();
-                        MegaStreamermode.getInstance().saveResource(this.configName, false);
+                        MegaNicks.getInstance().saveResource(this.configName, false);
                 }
         }
 

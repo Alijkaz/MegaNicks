@@ -1,16 +1,16 @@
-name: MegaStreamermode
+name: MegaNicks
 version: '${project.version}'
-main: ir.jeykey.megastreamermode.MegaStreamermode
+main: ir.jeykey.meganicks.MegaNicks
 authors: [ Alijk ]
-description: Simple powerful Streamermode plugin
+description: Simple powerful Nick plugin
 website: https://jeykey.ir
 commands:
   streamermode:
-    description: Toggle streamermode command
+    description: Toggle nick command
     usage: /<command> (player)
     aliases:
-      - sm
+      - nicks
 permissions:
-  megasm.use:
-    description: Toggle streamermode command permission
+  meganicks.use:
+    description: Toggle nick command permission
     default: op

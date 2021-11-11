@@ -1,4 +1,4 @@
-package ir.jeykey.megastreamermode.config;
+package ir.jeykey.meganicks.config;
 
 public class Storage extends Configurable {
         public static String LOCATION;

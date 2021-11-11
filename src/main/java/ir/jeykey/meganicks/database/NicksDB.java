@@ -1,9 +1,9 @@
-package ir.jeykey.megastreamermode.database;
+package ir.jeykey.meganicks.database;
 
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class StreamerModeDB {
+public class NicksDB {
         public static void createTables(boolean isMysql) {
                 try {
                         final Statement statement = DataSource.getConnection().createStatement();

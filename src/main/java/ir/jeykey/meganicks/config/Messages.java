@@ -1,6 +1,6 @@
-package ir.jeykey.megastreamermode.config;
+package ir.jeykey.meganicks.config;
 
-import ir.jeykey.megastreamermode.utils.Common;
+import ir.jeykey.meganicks.utils.Common;
 
 public class Messages extends Configurable {
         public static String PREFIX;
