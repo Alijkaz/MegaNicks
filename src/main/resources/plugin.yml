@@ -1,0 +1,16 @@
+name: MegaStreamermode
+version: '${project.version}'
+main: ir.jeykey.megastreamermode.MegaStreamermode
+authors: [ Alijk ]
+description: Simple powerful Streamermode plugin
+website: https://jeykey.ir
+commands:
+  streamermode:
+    description: Toggle streamermode command
+    usage: /<command> (player)
+    aliases:
+      - sm
+permissions:
+  megasm.use:
+    description: Toggle streamermode command permission
+    default: op
